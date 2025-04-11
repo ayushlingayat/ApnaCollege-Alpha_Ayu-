@@ -1,5 +1,4 @@
-//Abb tail kee sath operation perform karne kaa code hoga
-public class AddLastInLinkedList {
+public class AddInMiddleLinkedList {
     public static class Node {
         int data;
         Node next;
@@ -68,25 +67,43 @@ public class AddLastInLinkedList {
         System.out.println("null");
     }
 
-    public static void main(String args[]){
-        AddLastInLinkedList ll = new AddLastInLinkedList();
-        ll.printList(); 
-        ll.addFirst(2);
-        ll.printList(); 
-        ll.addFirst(1);
-        ll.printList(); 
-        ll.addLast(3);
-        ll.printList(); 
-        ll.addLast(4);
-        ll.printList(); 
+    public void addMid(int idx , int data){
+        if(idx == 0){ //yaha toh head kii value bhi modify krr sakhte isse okk 
+            addFirst(data);
+            return;
+        }
+        // Step 1 : create a NewNode
+        Node newNode = new Node(data);
+        Node temp = head;
+        int i = 0; //yeeh naa track rakhega idx kee prev element kaa
+
+        while(i<idx -1){
+            temp = temp.next;
+            i++;
+        }
+
+        //i = idx -1 //matlab temp = prev hoga samje 
+        //Step 2 : new node kaa next temp kee next koo point karne lage and temp kaa next banjaye new node 
+        newNode.next = temp.next; //new node kaa next temp kee next koo point karne lage
+        temp.next = newNode;//aur temp kaa niche side kaa next ban jaye newNode 
     }
 
-    public void addMid(int i, int j) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addMid'");
+    public static void main(String args[]){
+        AddInMiddleLinkedList ll = new AddInMiddleLinkedList(); 
+        ll.addFirst(2); 
+        ll.addFirst(1); 
+        ll.addLast(3); 
+        ll.addLast(4);
+        ll.addMid(2,9);
+        ll.addMid(3, 10);
+        ll.printList(); 
     }
 }
 
+// add(Index , data)
+// add in middle take 0(n) time because idx (index) dundhne mein time lag jata hee 
+// Linkage process mein naa constant time lagta hee 
+ //Abb tail kee sath operation perform karne kaa code hoga
 //Yeeh cheeze straight hori in addlast of linkedlist okk
 
 // addFirst => 0(1); constant time

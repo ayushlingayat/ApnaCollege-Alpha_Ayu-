@@ -25,7 +25,7 @@ class LinkedList{
    
 
     public static void main(String args[]){
-        LinkedList ll = new LinkedList();
+        // LinkedList ll = new LinkedList();
         // ll.head = new Node(1); 
         //LinkedList kee ander joo bhi head hee naa usmein data store hoga 1
         // ll.head.next = new Node(2);
