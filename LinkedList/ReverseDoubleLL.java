@@ -1,4 +1,6 @@
-public class DoubleLL {
+import java.util.*;
+
+public class ReverseDoubleLL {
     public class Node {
         int data;
         Node next;
@@ -11,9 +13,9 @@ public class DoubleLL {
         }
     }
 
-    public static Node head;
-    public static Node tail;
-    public static int size;
+    public Node head;
+    public Node tail;
+    public int size;
 
     // add at beginning
     public void addFirst(int data) {
@@ -95,25 +97,29 @@ public class DoubleLL {
         return val;
     }
 
+    // reverse the DLL
+    public void reverse() {
+        Node curr = head;
+        Node prev = null;
+        Node next;
+
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            curr.prev = next;
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+    }
+
     public static void main(String args[]) {
-        DoubleLL dll = new DoubleLL();
-        dll.addFirst(3);
-        dll.addFirst(2);
-        dll.addFirst(1);
-        dll.print();
-        System.out.println("Size: " + dll.size);
-
-        dll.removeFirst();
-        dll.print();
-        System.out.println("Size: " + dll.size);
-
-        dll.addLast(4);
-        dll.addLast(5);
-        dll.print();
-        System.out.println("Size: " + dll.size);
-
-        dll.removeLast();
-        dll.print();
-        System.out.println("Size: " + dll.size);
+        ReverseDoubleLL rdll = new ReverseDoubleLL();
+        rdll.addFirst(3);
+        rdll.addFirst(2);
+        rdll.addFirst(1);
+        rdll.print();
+        rdll.reverse();
+        rdll.print();
     }
 }
